@@ -28,3 +28,35 @@ li:hover{
     background-color: aliceblue;
     
 }
+
+/* css modal  */
+.background_view_shoe{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.76);
+    display: none;
+}
+.view_Shoe{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    background-color: white;
+    display: none;
+    
+}
+
+/* css item_Shoe  */
+.item_Background{
+    padding: 3px 3px;
+}
+.item_Shoe{
+    border: 1px solid rgba(0, 0, 255, 0.26);
+    padding: 2px 2px;
+    background-color: rgba(245, 222, 179, 0.247);
+}

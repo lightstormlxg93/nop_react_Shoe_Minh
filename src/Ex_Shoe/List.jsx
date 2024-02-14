@@ -9,7 +9,12 @@ export default class List extends Component {
    }
     render() {
     return (
-      <div className='row col-8'>
+      
+      <div className='row col-9'>
+        <div className='col-12' style={{textAlign:"center", fontSize:"35px"}}>
+
+        Shoes Shop
+        </div>
         {this.renderListShoe()}
       </div>
     )

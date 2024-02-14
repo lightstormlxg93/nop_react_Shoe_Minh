@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import List from './List'
+import Modal from './Modal'
 
 
 export default class Ex_Shoe extends Component {
@@ -128,20 +129,24 @@ export default class Ex_Shoe extends Component {
         ],
         detail: {}
     }
-    handelChangeDetail = (shoe) => { this.setState({ detail: shoe }) }
+    handelChangeDetail = (shoe) => { 
+        this.setState({ detail: shoe }) 
+        document.querySelector(".background_view_shoe").style.display="block"
+        document.querySelector(".view_Shoe").style.display="block"
+    }
     render() {
         return (
             <div >
-                <div className='row'>
+                <div className='row mx-0'>
 
-                <div className='nav_shoe col-4'>
+                <div className='nav_shoe col-3'>
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Shop</a></li>
                     </ul>
                     
                 </div>
-                <div className='col-4'></div>
+                <div className='col-3'></div>
 
                 <List
 
@@ -149,6 +154,7 @@ export default class Ex_Shoe extends Component {
                     shoeArr={this.state.shoeArr}
                 />
                 </div>
+                <Modal itemShoe={this.state.detail} />
 
             </div>
         )
