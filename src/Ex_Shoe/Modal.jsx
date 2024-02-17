@@ -23,7 +23,7 @@ export default class Modal extends Component {
             <br />
             <div style={{backgroundColor:'gray', color:"white"}}>
                 <span>Name:</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{name}</span> <br />
-                <span>Price:</span>  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{price}</span> <br />
+                <span>Price:</span>  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{price}$</span> <br />
                 <div style={{display:"flex"}}>
                   <span>Desc:</span>
                   <span style={{paddingLeft:"31px"}}>{shortDescription}</span> <br />
