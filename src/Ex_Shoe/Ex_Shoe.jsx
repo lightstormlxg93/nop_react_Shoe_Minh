@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import List from './List'
 import Modal from './Modal'
+import Cart from './Cart'
 
 
 export default class Ex_Shoe extends Component {
@@ -127,34 +128,79 @@ export default class Ex_Shoe extends Component {
                 "image": "http://svcy3.myclass.vn/images/nike-air-max-270-react.png"
             }
         ],
-        detail: {}
+        detail: {},
+        cart:[],
     }
-    handelChangeDetail = (shoe) => { 
-        this.setState({ detail: shoe }) 
-        document.querySelector(".background_view_shoe").style.display="block"
-        document.querySelector(".view_Shoe").style.display="block"
+    handelChangeDetail = (shoe) => {
+        this.setState({ detail: shoe })
+        document.querySelector(".background_view_shoe").style.display = "block"
+        document.querySelector(".view_Shoe").style.display = "block"
     }
+    handelAddToCart = (shoe) => { 
+        
+        let cloneCart=[...this.state.cart]
+        let index= cloneCart.findIndex((item) => { return item.id==shoe.id })
+        if (index== -1) {
+            let newShoe={...shoe, amount:1};
+            cloneCart.push(newShoe);
+        }else{
+            cloneCart[index].amount++;
+        }
+        this.setState({cart:cloneCart});
+     }
+     handelPlus = (shoe) => { 
+        let cloneCart=[...this.state.cart]
+        let index= cloneCart.findIndex((item) => { return item.id==shoe.id })
+        cloneCart[index].amount++;
+        this.setState({cart:cloneCart});
+        
+      }
+      handelDown = (shoe) => { 
+        let cloneCart=[...this.state.cart]
+        let index= cloneCart.findIndex((item) => { return item.id==shoe.id })
+        cloneCart[index].amount-=1;
+        if (shoe.amount<=0) {
+            cloneCart.splice(index,1)
+        }
+        this.setState({cart:cloneCart});
+        
+      }
+      handelDelete=(shoe) => { 
+        let cloneCart=[...this.state.cart]
+        let index= cloneCart.findIndex((item) => { return item.id==shoe.id })
+        cloneCart.splice(index,1)
+
+        this.setState({cart:cloneCart});
+       }
+
+
     render() {
+
         return (
-            <div >
+            <div className='col-12'>
+                <Cart  cart={this.state.cart} handelPlus={this.handelPlus}  handelDown={this.handelDown} handelDelete={this.handelDelete}/>
                 <div className='row mx-0'>
+                    {/* begin nav */}
+                    <div className='nav_shoe col-3'>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Shop</a></li>
+                        </ul>
 
-                <div className='nav_shoe col-3'>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                    </ul>
-                    
-                </div>
-                <div className='col-3'></div>
+                    </div>
+                    {/* background nav */}
+                    <div className='col-3'></div>
+                    {/* end nav */}
+                    <List
 
-                <List
-
-                    handelViewDetail={this.handelChangeDetail}
-                    shoeArr={this.state.shoeArr}
-                />
+                        handelViewDetail={this.handelChangeDetail}
+                        shoeArr={this.state.shoeArr}
+                        handelAddToCart={this.handelAddToCart} 
+                    />
                 </div>
                 <Modal itemShoe={this.state.detail} />
+                
+
 
             </div>
         )

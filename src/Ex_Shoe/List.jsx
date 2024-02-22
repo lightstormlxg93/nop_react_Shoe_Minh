@@ -4,7 +4,7 @@ import Item from './Item'
 export default class List extends Component {
   renderListShoe=() => { 
     return this.props.shoeArr.map((item) => { 
-        return <Item handelClickDetail={this.props.handelViewDetail} key={item.id} data={item}/>
+        return <Item handelClickDetail={this.props.handelViewDetail} handelAddToCart={this.props.handelAddToCart}  key={item.id} data={item}/>
      })
    }
     render() {

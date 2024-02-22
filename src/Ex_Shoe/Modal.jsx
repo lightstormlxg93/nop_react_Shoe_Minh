@@ -18,7 +18,7 @@ export default class Modal extends Component {
         <div className="view_Shoe">
             <div style={{textAlign:"center"}}>
 
-            <img style={{width:"70%"}} src={image} alt="" />
+            <img style={{width:"100%"}} src={image} alt="" />
             </div>
             <br />
             <div style={{backgroundColor:'gray', color:"white"}}>
